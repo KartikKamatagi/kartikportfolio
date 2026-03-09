@@ -1,0 +1,16 @@
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.hov-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hov-scale:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.25);
+}
