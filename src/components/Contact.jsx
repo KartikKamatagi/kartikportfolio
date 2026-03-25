@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { HiOutlineMail, HiLocationMarker, HiOutlinePhone } from 'react-icons/hi';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { HiOutlineMail, HiLocationMarker, HiOutlinePhone, HiCheckCircle, HiExclamationCircle } from 'react-icons/hi';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+    const formRef = useRef();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        message: ''
+    });
+
+    const [status, setStatus] = useState({
+        loading: false,
+        success: false,
+        error: false,
         message: ''
     });
 
@@ -16,10 +25,39 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log(formData);
-        alert("Message sent successfully (Dummy Action)");
-        setFormData({ name: '', email: '', message: '' });
+        setStatus({ loading: true, success: false, error: false, message: '' });
+
+        // EmailJS implementation
+        // Replacing with your credentials: service_id, template_id, public_key
+        emailjs.sendForm(
+            'service_dg1to7o', // Replace with your Service ID
+            'template_30ouo9h', // Replace with your Template ID
+            formRef.current,
+            'o1j40ANba2QkJcVu6' // Replace with your Public Key
+        )
+            .then((result) => {
+                console.log(result.text);
+                setStatus({
+                    loading: false,
+                    success: true,
+                    error: false,
+                    message: 'Message sent successfully!'
+                });
+                setFormData({ name: '', email: '', message: '' });
+
+                // Reset success message after 5 seconds
+                setTimeout(() => {
+                    setStatus(prev => ({ ...prev, success: false }));
+                }, 5000);
+            }, (error) => {
+                console.error('EmailJS Error:', error);
+                setStatus({
+                    loading: false,
+                    success: false,
+                    error: true,
+                    message: `Error: ${error.text || 'Unknown error'}. Please check your template settings.`
+                });
+            });
     };
 
     return (
@@ -97,7 +135,7 @@ const Contact = () => {
                                         <FaGithub size={20} />
                                     </a>
                                     <a href="https://www.instagram.com/kartik_kamatagi_?igsh=eTN0c2Vma2l2MGk5" className="w-10 h-10 rounded-full bg-dark-bg flex items-center justify-center text-dark-muted hover:text-white hover:bg-[#1da1f2] transition-all">
-                                         <FaInstagram size={20} />
+                                        <FaInstagram size={20} />
                                     </a>
                                 </div>
                             </div>
@@ -112,7 +150,7 @@ const Contact = () => {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
                     >
-                        <form onSubmit={handleSubmit} className="glass-card p-8 rounded-2xl space-y-6">
+                        <form ref={formRef} onSubmit={handleSubmit} className="glass-card p-8 rounded-2xl space-y-6 relative overflow-hidden">
                             <h3 className="text-2xl text-white font-semibold mb-6">Send a Message</h3>
 
                             <div>
@@ -159,10 +197,46 @@ const Contact = () => {
 
                             <button
                                 type="submit"
-                                className="w-full bg-primary hover:bg-primary-hover text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 hov-scale"
+                                disabled={status.loading}
+                                className={`w-full bg-primary hover:bg-primary-hover text-white font-medium py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2 hov-scale ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
-                                Send Message
+                                {status.loading ? (
+                                    <>
+                                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Sending...
+                                    </>
+                                ) : 'Send Message'}
                             </button>
+
+                            {/* Status Messages */}
+                            <AnimatePresence>
+                                {status.success && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0 }}
+                                        className="flex items-center gap-2 text-green-400 bg-green-400/10 p-4 rounded-lg border border-green-400/20"
+                                    >
+                                        <HiCheckCircle size={20} />
+                                        <span>{status.message}</span>
+                                    </motion.div>
+                                )}
+
+                                {status.error && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0 }}
+                                        className="flex items-center gap-2 text-red-400 bg-red-400/10 p-4 rounded-lg border border-red-400/20"
+                                    >
+                                        <HiExclamationCircle size={20} />
+                                        <span>{status.message}</span>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
 
                         </form>
                     </motion.div>

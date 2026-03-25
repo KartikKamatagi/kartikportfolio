@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -32,26 +31,27 @@ const Navbar = () => {
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
-                    <div className="flex-shrink-0 cursor-pointer">
-                        <Link to="home" smooth={true} duration={500}>
-                            <span className="text-2xl font-bold text-white tracking-wider">
+                    <div className="flex-shrink-0 cursor-pointer group">
+                        <a href="#home" className="flex items-center gap-2">
+                            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                                <img src="/klogo.svg" alt="Kartik Logo" className="w-6 h-6 object-contain" />
+                            </div>
+                            <span className="text-2xl font-bold text-white tracking-wider group-hover:text-primary transition-colors">
                                 Kartik<span className="text-primary">.</span>
                             </span>
-                        </Link>
+                        </a>
                     </div>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-8">
                         {navLinks.map((link) => (
-                            <Link
+                            <a
                                 key={link.name}
-                                to={link.to}
-                                smooth={true}
-                                duration={500}
+                                href={`#${link.to}`}
                                 className="text-dark-text hover:text-primary transition-colors cursor-pointer text-sm uppercase tracking-widest font-medium"
                             >
                                 {link.name}
-                            </Link>
+                            </a>
                         ))}
                     </div>
 
@@ -78,16 +78,14 @@ const Navbar = () => {
                     >
                         <div className="px-4 py-6 flex flex-col space-y-4 text-center">
                             {navLinks.map((link) => (
-                                <Link
+                                <a
                                     key={link.name}
-                                    to={link.to}
-                                    smooth={true}
-                                    duration={500}
+                                    href={`#${link.to}`}
                                     onClick={() => setIsOpen(false)}
                                     className="text-dark-text hover:text-primary transition-colors cursor-pointer text-lg font-medium"
                                 >
                                     {link.name}
-                                </Link>
+                                </a>
                             ))}
                         </div>
                     </motion.div>

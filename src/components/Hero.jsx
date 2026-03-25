@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
 import { HiDownload, HiArrowRight } from 'react-icons/hi';
+import KartikResume from '../assets/Resume(Kartik1).pdf';
 
 const Hero = () => {
     return (
@@ -43,32 +43,29 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <Link
-                            to="projects"
-                            smooth={true}
-                            duration={500}
+                        <a
+                            href="#projects"
                             className="cursor-pointer bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2 group"
                         >
                             View Projects
                             <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        </a>
 
                         <a
-                            href="#"
+                            href={KartikResume}
+                            download="Kartik_Resume.pdf"
                             className="cursor-pointer glass hover:bg-dark-card text-white px-8 py-3 rounded-full font-medium transition-all flex items-center justify-center gap-2"
                         >
                             <HiDownload className="text-xl" />
                             Download Resume
                         </a>
 
-                        <Link
-                            to="contact"
-                            smooth={true}
-                            duration={500}
+                        <a
+                            href="#contact"
                             className="cursor-pointer border border-dark-border hover:border-primary/50 text-white px-8 py-3 rounded-full font-medium transition-all flex items-center justify-center"
                         >
                             Contact Me
-                        </Link>
+                        </a>
                     </div>
                 </motion.div>
             </div>
