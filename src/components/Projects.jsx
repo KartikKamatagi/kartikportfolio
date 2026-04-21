@@ -17,8 +17,8 @@ const Projects = () => {
             description: "A responsive food delivery interface with cart, checkout, search, categories, and order tracking using React Context API.",
             image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=2581&auto=format&fit=crop", // Food placeholder
             tech: ["React", "JavaScript", "CSS", "React Router"],
-            github: "#",
-            demo: "#"
+            github: "https://github.com/KartikKamatagi/food-order-system",
+            demo: "https://foodieexpresss.vercel.app/"
         },
         {
             title: "Adventure Tourism Website",
