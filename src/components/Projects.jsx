@@ -25,7 +25,7 @@ const Projects = () => {
             description: "A tourism web platform where users can explore adventure packages and view activity details.",
             image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2621&auto=format&fit=crop", // Tourism placeholder
             tech: ["Python", "Django", "SQLite", "HTML", "CSS"],
-            github: "#",
+            github: "https://github.com/KartikKamatagi/AdventureTourism",
             demo: "#"
         },
         {
