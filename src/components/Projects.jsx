@@ -48,7 +48,7 @@ const Projects = () => {
             title: "Agriculture Project",
             description: "A farming-focused web project that includes crop recommendations, market price tracking, and agricultural insights for farmers. Built to support better decision-making and improve crop management.",
             image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=2670&auto=format&fit=crop", // Agriculture placeholder
-            tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+            tech: ["React.js","Django", "Bootstrap","SQLite"],
             github: "https://github.com/KartikKamatagi/Agriculture_Project",
             demo: "#"
         }
