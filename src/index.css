@@ -16,7 +16,11 @@
   }
   
   .glass-card {
-    @apply bg-dark-card/80 backdrop-blur-sm border border-dark-border/50 shadow-xl;
+    @apply bg-dark-card/80 backdrop-blur-sm border border-dark-border/50 shadow-xl transition-transform duration-300;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-0.25rem);
   }
   
   .text-gradient {
