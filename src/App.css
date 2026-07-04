@@ -48,7 +48,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(56, 189, 248, 0.95);
+  background: rgba(146, 171, 182, 0.95);
   box-shadow: 0 0 8px rgba(56, 189, 248, 0.8), 0 0 18px rgba(56, 189, 248, 0.35);
   opacity: 0.9;
   animation: magicCursorParticle 0.7s ease-out forwards;
@@ -56,7 +56,7 @@
 
 .section-shell {
   position: relative;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(42, 41, 41, 0.08);
   background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
   box-shadow: 0 20px 45px rgba(2, 8, 23, 0.25);
   backdrop-filter: blur(16px);
