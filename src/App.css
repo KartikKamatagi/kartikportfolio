@@ -54,6 +54,24 @@
   animation: magicCursorParticle 0.7s ease-out forwards;
 }
 
+.section-shell {
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  box-shadow: 0 20px 45px rgba(2, 8, 23, 0.25);
+  backdrop-filter: blur(16px);
+}
+
+.soft-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 35px rgba(2, 8, 23, 0.2);
+}
+
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.16), 0 0 25px rgba(56, 189, 248, 0.12);
+}
+
 @keyframes magicCursorParticle {
   0% {
     transform: translate(-50%, -50%) scale(1);

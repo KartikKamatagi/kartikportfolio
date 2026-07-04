@@ -76,24 +76,27 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300 hover:shadow-primary/20 hover:shadow-2xl"
+                            className="glass-card rounded-[24px] overflow-hidden group hover:-translate-y-2 transition-all duration-300 hover:shadow-primary/20 hover:shadow-2xl"
                         >
                             {/* Project Image Container */}
                             <div className="relative h-60 overflow-hidden">
-                                <div className="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-300 z-10"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/20 to-transparent z-10"></div>
                                 <img
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                                 />
+                                <span className="absolute top-4 right-4 z-20 rounded-full border border-white/20 bg-dark-bg/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-primary backdrop-blur">
+                                    Featured
+                                </span>
 
                                 {/* Hover Links Overlay */}
-                                <div className="absolute inset-0 bg-dark-bg/80 flex items-center justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-sm">
-                                    <a href={project.github} className="w-12 h-12 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center text-white transition-colors">
-                                        <FaGithub size={24} />
+                                <div className="absolute inset-0 bg-dark-bg/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-sm">
+                                    <a href={project.github} target="_blank" rel="noreferrer" className="rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-primary hover:border-primary">
+                                        <span className="flex items-center gap-2"><FaGithub size={16} /> Code</span>
                                     </a>
-                                    <a href={project.demo} className="w-12 h-12 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center text-white transition-colors">
-                                        <FaExternalLinkAlt size={20} />
+                                    <a href={project.demo} target="_blank" rel="noreferrer" className="rounded-full border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-white">
+                                        <span className="flex items-center gap-2"><FaExternalLinkAlt size={14} /> Live</span>
                                     </a>
                                 </div>
                             </div>
